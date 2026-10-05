@@ -1,0 +1,2 @@
+# What and where
+Those notes are to be used as a entrypoint for machine data analysis, to formulate my fears into facts, to see trough my defense mechanisms and facilitate creation of notes that a professional can take and see what to start with on the therapy.
