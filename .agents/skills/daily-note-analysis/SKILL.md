@@ -1,60 +1,59 @@
 ---
 name: daily-note-analysis
-description: Analyze personal daily notes, reflections, and updates for body signals, unmet needs, and defensive intellectualization. Use for self-reflection; not for diagnosis or crisis care.
+description: Orchestrate daily-note analysis across emotional, relationship, overload, escape, engineering, and other relevant skills; write a concise summary and topic-specific outputs.
 ---
 
 # Daily note analysis
 
-## Canonical daily-note bundle
+This is the facade and entry point for analysis of any source under `notes/`, not only daily-note bundles. Use it to select, coordinate, and connect the specialist skills. When the process needs to expand, add the specialist skill, link it, and define its trigger and output ownership in the routing map below; do not duplicate its full method here.
 
-New daily notes use a dated bundle under `notes/<month_year>/<YYYY-MM-DD>/`:
+## Canonical daily bundle
 
 ```text
-notes/october_2026/2026-10-05/
-├── personal/
-│   └── day-note.md
+notes/<month_year>/<YYYY-MM-DD>/
+├── personal/day-note.md
 └── agentic/
-    └── analysis.md
+    ├── summary.md
+    ├── personal.md
+    ├── relationships.md       # when relevant
+    ├── engineering.md         # when relevant
+    ├── support.md
+    └── others/                # additional topic/source analyses
 ```
 
-When analyzing a bundle:
+The primary pattern is a general summary plus individual analyses for topics that actually occur in the source. `personal/day-note.md` is user-authored input; `agentic/personal.md` is generated emotional analysis. The summary is an index and synthesis, not a replacement for topic files.
 
-1. Read `personal/day-note.md` first; it is the primary daily source.
-2. Read every note file found anywhere under that bundle's `personal/` directory in deterministic path order. Treat additional personal files as supplementary evidence, never as a replacement for `day-note.md`.
-3. Write or update the generated result in the matching `agentic/analysis.md` file. Never overwrite files under `personal/`.
-4. If all personal files are empty, state `[Status]: no source content available` and do not infer a psychological, relational, medical, or engineering state.
-5. Keep project or contextual documents outside `personal/` separate unless an applicable skill explicitly requires them.
+Read every note file recursively under the date bundle's `personal/`, with `personal/day-note.md` first, then deterministic path order. Never write into or overwrite source files. Keep documents outside `personal/` out of the evidence set unless the user or a relevant skill explicitly makes them context.
 
-Legacy files (`YYYY-MM-DD-notes.md`, `YYYY-MM-DD/notes.md`, `personal-notes.md`, and top-level `agentic-analysis.md`) remain read-compatible for migration but must not be created for new dates. For non-bundle note files, preserve the repository's sibling `<note-stem>-analysis.md` artifact rule.
+## Skill routing
 
-### Description & Goal
-Process daily notes, phone logs, reflections, and user updates. Goal: extract raw body signals, identify hidden underlying needs, and spot moments where the defensive mask took control.
+For a non-empty bundle, always invoke:
 
-### Execution Workflow:
-1. **Extract Somatic Markers:**
-   * Scan for symptoms: "anvil", stomach clenching, paralysis, fatigue, dopamine crash.
-   * Identify Autonomic State: *Sympathetic (fight/flight)* vs *Dorsal Vagal (freeze/shutdown)* vs *Ventral Vagal (safe/social)*.
-2. **Identify Defensive Masks & Intellectualization:**
-   * Does the note contain excessive psychological jargon used defensively?
-   * Is the relationship described from an external "observer/contractor" stance?
-3. **Analyze Unmet Needs:**
-   * Directly state what was missing (e.g., desire, appreciation after work, safe touch, clear communication without leaks).
-4. **Output Schema:**
-   * **[Somatic Signal]:** Physical state of the body.
-   * **[Nervous System State]:** Window of tolerance status (Exceeded / In Range).
-   * **[Defensive Shield]:** Was intellectualization triggered?
-   * **[Primary Need]:** Explicitly named without sugarcoating.
-   * **[Grounding Action]:** 1 immediate physical step.
+- [`emotional-analysis`](../emotional-analysis/SKILL.md) for the user's emotional experience and rational, accurately understood response; write its result to `agentic/personal.md`.
+- [`actionable-support`](../actionable-support/SKILL.md) to identify whether a concrete, user-usable aid is warranted; write it to `agentic/support.md`, including a concise no-action-needed status when appropriate.
 
-## Extended machine-use output
+Invoke additional skills only when source material warrants them, for both canonical bundles and standalone notes:
 
-Add these fields when the note contains relational, romantic, or consequential material:
+| Note signal | Specialist skill | Daily-bundle output |
+|---|---|---|
+| Romantic interaction, conflict, desire, boundary, repair | [`relationship-analysis`](../relationship-analysis/SKILL.md), with [`emotional-analysis`](../emotional-analysis/SKILL.md) | `agentic/relationships.md` |
+| Misunderstanding, ambiguous intent, direct/blunt wording, or escalating communication | [`relationship-communication`](../relationship-communication/SKILL.md), with [`relationship-analysis`](../relationship-analysis/SKILL.md) and [`emotional-analysis`](../emotional-analysis/SKILL.md) | `agentic/relationships.md`; put a concise usable script in `agentic/support.md` when warranted |
+| Body overload, “hot anvil,” stomach clenching, shutdown, reduced capacity | [`nervous-system-overload-analysis`](../nervous-system-overload-analysis/SKILL.md), with [`emotional-analysis`](../emotional-analysis/SKILL.md) | Contribute to `agentic/personal.md`; do not compete for ownership of the file |
+| Flirting, sexting, validation-seeking, phone escape, secrecy or repair impact | [`safety-escape-mechanism-analysis`](../safety-escape-mechanism-analysis/SKILL.md), with [`emotional-analysis`](../emotional-analysis/SKILL.md); also [`relationship-analysis`](../relationship-analysis/SKILL.md) when relational | Contribute to `agentic/relationships.md` if relational, otherwise `agentic/personal.md` |
+| Software, architecture, development, business, cost, automation | [`engineering-design-skill`](../engineering-design-skill/SKILL.md); add [`emotional-analysis`](../emotional-analysis/SKILL.md) only if personal affect or distress is also present | `agentic/engineering.md` |
+| Another distinct subject | Relevant available skill; if none fits, use careful general analysis and label uncertainty | A named file under `agentic/others/` |
 
-* **[Evidence Status]:** `report`, `observation`, `framework lens`, `inference`, or `unknown`.
-* **[Trigger and Interpretation]:** What happened and what meaning the body assigned to it.
-* **[Protective Move]:** Pursuit, withdrawal, intellectualization, phone escape, shutdown, or another observable response.
-* **[Partner Data]:** Direct words/actions only; otherwise write `UNKNOWN`.
-* **[Short-Term Payoff / Relational Cost]:** What the move solved immediately and what it damaged or complicated later.
-* **[Next Experiment]:** One bounded, observable action for the next interaction.
+Always use [`daily-note-structure`](../daily-note-structure/SKILL.md) to initialize a requested date bundle. The routing and evidence rules in this skill are sufficient to operate without historical notes. Files such as `notes/historical/gemini/internal-struggle-context.md`, `relationship-context.md`, and `engineering-context.md` are optional historical, user-reported context: consult them only when present and relevant, and never treat them as evidence about today's events.
 
-Do not turn a note into a prosecution brief against either partner. Keep reported experience, inference, and missing data separate.
+## Workflow and evidence discipline
+
+1. Establish whether personal source files contain text. If all are empty, write a short `[Status]: no source content available` in `agentic/summary.md`; do not manufacture personal or topic analyses. Preserve empty source files.
+   If the user supplies the note content directly and no source file is available, apply the same routing and evidence rules to that supplied content. If neither a source file nor source text is available, state that analysis cannot be grounded yet; do not infer content from profile or historical context. Do not create a missing input file or unrelated output artifact unless the user requests it.
+2. Extract only what is present: reported events, sensations, emotions, interpretations, needs, actions, outcomes, and explicit requests. Distinguish report, observation, framework lens, inference, and unknown.
+3. Select specialist skills using the routing table. Read their current `SKILL.md` instructions before using them. Preserve each skill's evidence and safety limits.
+4. Produce topic documents first. `summary.md` then records the concise synthesis, key uncertainties, and links to only the topic files that have substance. Keep distinct topics separate rather than merging them into one long essay.
+5. Make the work useful: include an actual next step or practical artifact when supported by the notes; otherwise say none is warranted.
+
+Never infer a diagnosis, exact autonomic or neurotransmitter mechanism, the absent partner's mental state, or the user's intention from profile context alone. The user's self-reported AuDHD/ASD context, “hot anvil,” Contractor-style intellectualization, relationship aims, and escape-function formulation are hypotheses/context to test against current text, not templates to force onto every date.
+
+For a standalone note, keep the source readable, run this same routing process, and combine the applicable specialists' findings in one sibling `<note-stem>-analysis.md`. Do not create a separate bundle or new legacy flat formats unless requested. For new daily dates, use the canonical bundle instead.

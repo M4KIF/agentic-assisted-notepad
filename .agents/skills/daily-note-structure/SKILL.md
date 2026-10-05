@@ -1,60 +1,49 @@
 ---
 name: daily-note-structure
-description: Idempotently initialize the canonical dated personal-note bundle with personal/day-note.md and agentic/analysis.md.
+description: Idempotently initialize the repository's dated daily-note bundle with a summary, topic outputs, and raw personal input.
 ---
 
 # Daily note structure
 
-Use this skill when a dated daily-note bundle must be created or checked. It creates the canonical structure without overwriting existing user content.
+Use this skill when the user asks to create or check the note bundle for a date. The primary generated pattern is one short general summary plus separate, visible files for each applicable topic.
 
 ## Canonical structure
 
-For a requested date `YYYY-MM-DD`, use the repository's month directory convention, for example:
+For a valid date `YYYY-MM-DD`, place the bundle under `notes/<lowercase-month>_<year>/<YYYY-MM-DD>/`:
 
 ```text
 notes/october_2026/2026-10-05/
 ├── personal/
-│   └── day-note.md
+│   └── day-note.md             # human-authored source
 └── agentic/
-    └── analysis.md
+    ├── summary.md              # always: overview and links to topic outputs
+    ├── personal.md             # emotional analysis and rational support
+    ├── relationships.md        # when relationship content is present
+    ├── engineering.md          # when engineering/business content is present
+    ├── support.md              # concrete, usable aid
+    └── others/                 # additional topic/source analyses when needed
 ```
 
-The month directory is lowercase `<month>_<year>` and the date directory is ISO `YYYY-MM-DD`.
+`personal/day-note.md` is raw user input. `agentic/personal.md` is generated emotional analysis; the names are intentionally distinct.
 
-## Invocation contract
+## Initialization behavior
 
-1. Require one valid date argument in `YYYY-MM-DD` format.
-2. Resolve the target below `notes/`, relative to the repository root.
-3. If both directories and both files already exist, return `NO_OP` and do not modify timestamps or contents.
-4. If the structure is partial, create only missing directories and files; preserve every existing file byte-for-byte.
-5. Do not delete, rename, migrate, or overwrite legacy files such as `personal-notes.md`, `agentic-analysis.md`, `notes.md`, or `YYYY-MM-DD-notes.md`.
-6. Report the exact paths created and whether the result was `CREATED`, `COMPLETED_PARTIAL_STRUCTURE`, or `NO_OP`.
+1. Require a valid ISO date and resolve every target relative to the repository root.
+2. The required starter set is `personal/day-note.md`, `agentic/summary.md`, `agentic/personal.md`, and `agentic/support.md`. Create ready-to-use `relationships.md` and `engineering.md` topic files as well, matching the current bundle convention. Create `agentic/others/` for additional topic analyses.
+3. If the complete structure already exists, return `NO_OP` without changing file contents or timestamps.
+4. If it is partial, create only missing directories and files. Never overwrite or reformat any existing file.
+5. Newly created outputs contain only a title with the requested date and `[Status]: pending source note`; do not invent note content or analysis.
+6. Report the status (`CREATED`, `COMPLETED_PARTIAL_STRUCTURE`, or `NO_OP`) and paths created.
 
-## Initial file templates
+The general generated overview is `agentic/summary.md`. Do not create `agentic/analysis.md` for new bundles; it is a legacy-compatible name only. Do not delete or rename legacy files such as `personal-notes.md`, `agentic-analysis.md`, `analysis.md`, or `YYYY-MM-DD-notes.md`.
 
-Only newly created files receive these minimal headings:
+## Analysis ownership
 
-`personal/day-note.md`
+- [`daily-note-analysis`](../daily-note-analysis/SKILL.md) is the facade that coordinates the applicable analysis skills and maintains the summary/index.
+- [`emotional-analysis`](../emotional-analysis/SKILL.md) owns `agentic/personal.md`.
+- [`relationship-analysis`](../relationship-analysis/SKILL.md) owns `agentic/relationships.md` when relevant.
+- [`engineering-design-skill`](../engineering-design-skill/SKILL.md) owns `agentic/engineering.md` when relevant.
+- [`actionable-support`](../actionable-support/SKILL.md) owns `agentic/support.md`.
+- Other applicable skills may add clearly named files under `agentic/others/`.
 
-```markdown
-# Daily Note — YYYY-MM-DD
-
-<!-- Write raw observations, events, body signals, needs, and decisions here. -->
-```
-
-`agentic/analysis.md`
-
-```markdown
-# Agentic Analysis — YYYY-MM-DD
-
-[Status]: pending source note
-```
-
-The skill must not generate psychological, relational, medical, or engineering conclusions. Analysis is performed later by `daily-note-analysis` or another applicable skill.
-
-## Safety and idempotency
-
-- Reject invalid or ambiguous dates before creating anything.
-- Keep human input and generated analysis in separate files.
-- Never treat an empty `day-note.md` as evidence of an empty emotional state; report only that no source text is available.
-- This skill creates local note structure only; it does not contact external systems, publish notes, or change repository policy.
+Structure creation itself performs no analysis. An empty source note means only that no source text is available; it says nothing about the user's emotional state.

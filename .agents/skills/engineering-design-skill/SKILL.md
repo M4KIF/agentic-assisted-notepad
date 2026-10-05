@@ -5,7 +5,7 @@ description: Design and review pragmatic software systems, automation, AI pipeli
 
 # Engineering design skill
 
-Use this skill when a prompt or note drifts toward software architecture, development, automation, AI agents, data pipelines, deployment, business feasibility, staffing, costs, throughput, ROI, or operational control. Read `notes/historical-context-engineering.md` when working in this repository.
+Use this skill when a prompt or note drifts toward software architecture, development, automation, AI agents, data pipelines, deployment, business feasibility, staffing, costs, throughput, ROI, or operational control. This skill is self-contained for operational use. `notes/historical/gemini/engineering-context.md` is optional user-reported background when present and relevant; its absence must not block work or substitute for current requirements and project instructions.
 
 ## 1. Design posture
 
@@ -88,7 +88,7 @@ Technical prices, model names, vendor semantics, taxes, laws, and platform polic
 
 ## 8. Mixed engineering and personal context
 
-The user may use engineering language to regulate or organize distress. If a technical discussion contains current body overload, shame, panic, or relational threat, keep the engineering task bounded and load the appropriate somatic/relationship skill as well. Do not use architecture to avoid a necessary grounding step; do not use psychological language to replace engineering requirements.
+The user may use engineering language to regulate or organize distress. If a technical discussion contains current body overload, shame, panic, or relational threat, keep the engineering task bounded and load [`emotional-analysis`](../emotional-analysis/SKILL.md) plus the relevant [`nervous-system-overload-analysis`](../nervous-system-overload-analysis/SKILL.md) or [`relationship-analysis`](../relationship-analysis/SKILL.md) skill. Use [`actionable-support`](../actionable-support/SKILL.md) to provide a bounded implementation slice, decision aid, or communication aid when it adds concrete value. Do not use architecture to avoid a necessary grounding step; do not use psychological language to replace engineering requirements. In daily bundles, this skill owns `agentic/engineering.md` and the [`daily-note-analysis`](../daily-note-analysis/SKILL.md) facade owns the cross-topic summary.
 
 ## Engineering decision record
 

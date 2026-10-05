@@ -1,5 +1,10 @@
-# Ignore Markdown notes at the root and at every directory depth, including daily bundles.
-/notes/*.md
-/notes/*/*.md
-/notes/**.md
-/notes/**/*.md
+# Keep only the public notes index visible to version control.
+/notes/**
+!/notes/README.md
+
+# Keep therapy session content local; version only its repository instructions.
+/therapy/**
+!/therapy/AGENTS.md
+
+# Keep skills changelogs local to this workspace.
+/.agents/skills-changelog/

@@ -6,16 +6,21 @@ description: Reflect on relationship-specific validation-seeking or dopamine-see
 # Safety escape-mechanism analysis
 
 ## Description & Goal
-Analyze and deconstruct escape incidents (sexting, flirting, dopamine-seeking, artificial drama). Treats these behaviors strictly as Dopamine-Driven Affect Regulation, separating biological self-soothing from moral intent.
+Analyze validation-seeking, flirting, sexting, phone withdrawal, or other escape behavior by examining its possible short-term regulatory function alongside its interpersonal effects. Use [`emotional-analysis`](../emotional-analysis/SKILL.md) to represent the user's distress and need without moralizing. When the behavior affects a relationship, also invoke [`relationship-analysis`](../relationship-analysis/SKILL.md); use [`actionable-support`](../actionable-support/SKILL.md) for a concrete competing response and repair aid when warranted.
 
-## Diagnostic Sequence
-$$\text{Somatic Pain ("Anvil" / Clenching)} \longrightarrow \text{Threat Neuroception} \longrightarrow \text{Dopamine Drop / Cortisol Spike} \longrightarrow \text{Escape Impulse (Sexting/Flirt)} \longrightarrow \text{Somatic Relief} \longrightarrow \text{Shame \& Intellectualization}$$
+## Functional sequence
+Treat this as a functional sequence to investigate, not a verified biological chain:
+
+```text
+trigger or unmet need -> reported body/emotion state -> urge -> behavior
+-> immediate consequence -> later emotional and relational consequences
+```
 
 ## Analysis Instructions
-1. **Identify the Primary Somatic Trigger:** What physical pain or perceived rejection created the demand for an immediate "off-switch"?
-2. **Map the Loop Function:** How did external validation boost dopamine/oxytocin to dampen amygdala hyper-arousal?
-3. **Deconstruct the Post-Event Shield:** Highlight how the user built a "psychological theory" or contractor rationale to avoid shame.
-4. **Provide a Co-Regulation Alternative:** How to meet the underlying sensory/emotional need safely (e.g., somatic grounding, breath, directly stated desire).
+1. **Identify the antecedent:** What happened before the urge? Separate the observable event, the user's interpretation, their reported body/emotion state, and other possible contributors such as habit, novelty, anger, opportunity, or boredom. Do not assume rejection or panic was the cause.
+2. **Map the loop function:** What change did the user expect or experience (relief, novelty, validation, agency, numbness)? Do not infer a particular neurotransmitter mechanism from behavior alone.
+3. **Check post-event meaning-making:** If the user describes a contractor-style explanation or intellectualization, examine whether it helps them understand the event or bypasses emotion/accountability. Do not presume the defense is active.
+4. **Identify a safer alternative:** If the user wants to interrupt the pattern, choose a feasible alternative that can serve the same stated function while preserving consent, boundaries, and accountability. Do not assume a partner is available or responsible for regulating the user.
 
 ## Dual-truth accountability requirement
 

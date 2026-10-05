@@ -11,7 +11,7 @@ Use this skill for the repository's weekly or explicitly requested skill review.
 
 Skills are working instruments, not static doctrine. Human needs, language, relationship patterns, engineering decisions, and safety boundaries evolve through notes. This workflow studies the recent record, checks what each skill actually claims and enforces, and proposes only updates supported by recurring or consequential evidence.
 
-The required learning window is the seven calendar days ending on the current date. If the repository uses a different timezone or the current date is ambiguous, state the assumption. Include only files under `notes/` whose dates fall in that window; do not infer dates from file modification time alone when a note filename or content provides a clearer date.
+The required learning window is the seven calendar days ending on the current date. If the repository uses a different timezone or the current date is ambiguous, state the assumption. Include only files under `notes/` whose dates fall in that window; do not infer dates from file modification time alone when a note filename or content provides a clearer date. `notes/` may be empty or unavailable: record the resulting evidence gap, do not invent learning signals, and continue the skills-truth review. In that case, do not propose user-pattern changes on the basis of absent notes; request source material only if it is necessary to evaluate a specific proposed change.
 
 ## 2. Skills and context to inspect
 
@@ -19,22 +19,28 @@ Read every installed local skill under `.agents/skills/*/SKILL.md`, including:
 
 - `daily-note-analysis`
 - `daily-note-structure`
+- `emotional-analysis`
+- `actionable-support`
 - `nervous-system-overload-analysis`
 - `relationship-analysis`
+- `relationship-communication`
 - `safety-escape-mechanism-analysis`
 - `engineering-design-skill`
+- `therapy-summarise`
 - this `update-skills` skill
 
-Also read applicable repository context files, especially:
+Read applicable repository instructions and context when available:
 
 - `AGENTS.md`
 - `notes/AGENTS.md` if present
-- `notes/historical-context-chat-gemini.md`
-- `notes/historical-context-internal-struggle.md`
-- `notes/historical-context-relationship.md`
-- `notes/historical-context-engineering.md`
+- `notes/historical/gemini/chat.md` and `chat-analysis.md`
+- `notes/historical/gemini/internal-struggle-context.md`
+- `notes/historical/gemini/relationship-context.md`
+- `notes/historical/gemini/engineering-context.md`
 
-Follow the repository rule that any non-bundle note analysis produces a sibling `<note-stem>-analysis.md` artifact. For canonical daily bundles, `daily-note-analysis` writes `agentic/analysis.md` and reads every file under `personal/`, with `personal/day-note.md` first. Do not analyze ignored notes by modifying their source content unless explicitly asked.
+The historical files are optional user-reported context, not prerequisites. If absent or unreadable, rely on the current skills, repository instructions, and available dated source material; never infer their contents. If `notes/` contains no files in the review window, say so explicitly and do not treat older history as evidence of a new development in that window.
+
+For canonical daily bundles, `daily-note-analysis` reads every file under `personal/`, with `personal/day-note.md` first, routes to topic skills, and writes `summary.md` plus relevant topic files. Non-bundle note analysis produces a sibling `<note-stem>-analysis.md` artifact. Do not analyze ignored notes by modifying their source content unless explicitly asked.
 
 ## 3. Learning pass
 
@@ -62,7 +68,7 @@ Produce a proposal and stop. Do not modify any skill, `AGENTS.md`, context file,
 [Approval request]: ask the user to approve, reject, or amend the proposal
 ```
 
-The proposal must be understandable without requiring the user to reconstruct the seven-day notes. Keep quotations short and prefer precise paraphrase. Link each proposed update to the relevant skill and note artifact.
+The proposal must be understandable without requiring the user to reconstruct the seven-day notes. Keep quotations short and prefer precise paraphrase. Link each proposed update to the relevant skill and note artifact when one exists; otherwise state that no supporting note artifact was available and distinguish the proposal's basis (for example, a current user instruction or an internal inconsistency).
 
 ## 5. Apply pass — only after explicit agreement
 
@@ -75,7 +81,7 @@ After approval:
 3. Preserve unrelated directives, metadata, invocation policy, and user authorization boundaries.
 4. Validate frontmatter, names, links, placeholders, and internal references.
 5. Re-read the changed skills end-to-end and summarize the exact behavioral change.
-6. Record the review window, approval, changed files, and deferred proposals in a sibling update-analysis artifact or a clearly named changelog note. Do not rewrite source notes as part of skill maintenance.
+6. Only when at least one approved change was applied, record the review window, approval, changed files, rationale, and deferred proposals in a dated changelog file. The changelog is not a prerequisite for review or proposal: if `.agents/skills-changelog/` is absent, create it during this apply step. Do not create the directory or a changelog file for a no-op review. Use one file per approved apply, dated in `Europe/Warsaw`: name the first file `YYYY-MM-DD-changelog.md`, then use `YYYY-MM-DD-changelog-1.md`, `YYYY-MM-DD-changelog-2.md`, and so on for additional files that day. Check for collisions and never overwrite an existing file. Keep changelogs in this gitignored directory, not under `notes/`.
 
 ## 6. Weekly reminder behavior
 

@@ -1,13 +1,17 @@
 ---
 name: relationship-analysis
-description: Analyze recurring relationship and romantic interactions for triggers, attachment loops, somatic overload, unmet needs, desire, escape behavior, and repair. Use for reflective support, not diagnosis or high-stakes directives.
+description: Analyze relationship interactions for triggers, attachment loops, overload, needs, desire, escape behavior, communication breakdowns, and repair; not for diagnosis or high-stakes directives.
 ---
 
 # Relationship analysis
 
 ## Description and scope
 
-Deeply deconstruct interactions, friction, romantic/sexual meaning, and arguments between the user and his partner. Use attachment-cycle reasoning, body-state observations, and non-diagnostic IFS language. In this repository, read `notes/historical-context-relationship.md` when relevant.
+Analyze interactions, friction, romantic/sexual meaning, and arguments between the user and his partner. Use attachment-cycle reasoning, body-state observations, and non-diagnostic IFS language. This skill is self-contained for operational use. `notes/historical/gemini/relationship-context.md` is optional user-reported background when present and relevant; do not infer missing context or treat historical patterns as facts about a current interaction.
+
+For the user's own emotional experience, invoke [`emotional-analysis`](../emotional-analysis/SKILL.md) and write that formulation to `agentic/personal.md` in daily bundles. This skill owns the relational cycle and partner-data analysis in `agentic/relationships.md`. Apply [`nervous-system-overload-analysis`](../nervous-system-overload-analysis/SKILL.md) for capacity and grounding when relevant; apply [`safety-escape-mechanism-analysis`](../safety-escape-mechanism-analysis/SKILL.md) for validation-seeking or escape patterns. If the user needs a usable communication or repair aid, invoke [`actionable-support`](../actionable-support/SKILL.md) and write it to `agentic/support.md`.
+
+When the central problem is a misunderstanding, intent-impact gap, blunt/direct wording, or an escalating conversation, also use [`relationship-communication`](../relationship-communication/SKILL.md) for a two-way clarification and repair proposal. Do not make the communication formulation a substitute for mapping the broader relationship cycle.
 
 ## Evidence and scope guardrails
 
@@ -29,11 +33,11 @@ Deeply deconstruct interactions, friction, romantic/sexual meaning, and argument
 ## Required analysis sequence
 
 1. **Trigger:** Identify the observable event, interpretation, and body cue; do not start with a diagnosis.
-2. **Capacity:** Apply `nervous-system-overload-analysis`. Record a provisional 1–10 estimate from reported signals. At ≥7/10, halt theory, blame allocation, and irreversible decisions; use grounding and a bounded pause.
+2. **Capacity:** Apply [`nervous-system-overload-analysis`](../nervous-system-overload-analysis/SKILL.md); pair it with [`emotional-analysis`](../emotional-analysis/SKILL.md) for the user's subjective experience. Record a 1–10 self-rating only when the user provides or finds it useful. If the user reports acute distress or inability to process, defer complex theory, blame allocation, and irreversible decisions; offer grounding or a bounded pause.
 3. **Primary needs and fears:** Separate primary attachment/romantic needs from secondary moves such as criticism, pursuit, withdrawal, silence, or guilt.
 4. **Loop:** Map action A -> partner impact B -> protection C -> consequence D -> feedback into the next trigger.
 5. **Romantic/sexual meaning:** Identify whether the material concerns desire, care, recognition, touch, consent, boundary, pressure, or post-work decompression. Do not universalize gendered language.
-6. **Escape function and impact:** If flirting, sexting, validation-seeking, or phone withdrawal appears, use `safety-escape-mechanism-analysis` to map body trigger, short-term function, later impact, and safer alternative. Biological function does not erase relational accountability.
+6. **Escape function and impact:** If flirting, sexting, validation-seeking, or phone withdrawal appears, use [`safety-escape-mechanism-analysis`](../safety-escape-mechanism-analysis/SKILL.md) to map antecedents, short-term function, later impact, and safer alternative. A possible regulatory function does not erase relational accountability.
 7. **Partner data:** Quote or summarize direct partner information. If absent, mark unknown and list the minimum questions needed.
 8. **Repair:** Give one bounded next step: a small request, reflection, capacity check, pause/return time, boundary clarification, apology plus behavior change, or therapist agenda.
 
@@ -42,7 +46,7 @@ Deeply deconstruct interactions, friction, romantic/sexual meaning, and argument
 ```text
 [Evidence status]: report | observation | framework lens | inference | unknown
 [Interaction Trigger]: observable event and body cue
-[Overload Rating]: 1–10 with evidence; state whether the overload gate is active
+[Capacity Signal]: reported cues and impact on processing; optional user self-rating; whether a pause is warranted
 [User Primary Need/Fear]: direct and concrete
 [Partner Perspective]: direct report/quote, or UNKNOWN
 [Relational Loop]: action -> impact -> protection -> consequence
@@ -55,7 +59,7 @@ Deeply deconstruct interactions, friction, romantic/sexual meaning, and argument
 
 ## Intellectualization intervention
 
-Respect the user's analytical accuracy, then interrupt abstraction: “Pause the theory. What is the raw physical sensation in your stomach and head right now? Is the hot anvil present?” If overload is high, use the overload skill before continuing relational analysis.
+When the user reports distress while moving into abstraction, acknowledge what the analysis supports, then offer a somatic check: “Pause the theory. What is the raw physical sensation in your stomach and head right now? Is the hot anvil present?” If the user reports acute overload, use the overload skill before continuing complex relational analysis. Do not force this prompt into a purely analytical request.
 
 ## Clinical framing
 
