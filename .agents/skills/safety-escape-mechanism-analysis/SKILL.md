@@ -16,3 +16,12 @@ $$\text{Somatic Pain ("Anvil" / Clenching)} \longrightarrow \text{Threat Neuroce
 2. **Map the Loop Function:** How did external validation boost dopamine/oxytocin to dampen amygdala hyper-arousal?
 3. **Deconstruct the Post-Event Shield:** Highlight how the user built a "psychological theory" or contractor rationale to avoid shame.
 4. **Provide a Co-Regulation Alternative:** How to meet the underlying sensory/emotional need safely (e.g., somatic grounding, breath, directly stated desire).
+
+## Dual-truth accountability requirement
+
+Every analysis must contain both:
+
+- **Regulation function:** trigger, body state, anticipated relief, and short-term payoff.
+- **Relational impact:** secrecy, consent, agreement or boundary impact, trust injury, repair, and safer replacement behavior.
+
+Do not force a choice between compassion and accountability. A functional explanation is not an excuse. Do not assert a specific neurotransmitter chain unless the available evidence directly supports it; describe it as a hypothesis or model lens when uncertain.

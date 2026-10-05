@@ -20,3 +20,9 @@ Quantitative and qualitative assessment of Allostatic Overload, vagal capacity, 
 ## Analytical Directive
 1. Rate overload on a scale of 1–10.
 2. When the score is $\ge 7/10$: **HALT** all theoretical analysis and decision-making. Pivot the interaction exclusively to somatic recovery protocols (Somatic Tracking, deep exhalations, grounding, taking a communication break until ventral vagal tone returns).
+
+## Reassessment and evidence boundaries
+
+Record both a **pre-grounding** estimate and, when possible, a **post-grounding reassessment**: improved, unchanged, worsened, or unknown. If the body markers are self-reported, label them as reports; do not convert them into a medical diagnosis or a definitive autonomic mechanism.
+
+At $\ge7/10$, suspend blame allocation and irreversible relationship decisions as well as theory. Use a bounded pause with a defined return time, then reassess capacity before resuming. If severe, new, or medically concerning physical symptoms are present, recommend appropriate professional or emergency evaluation rather than attributing them solely to stress.

@@ -1,0 +1,5 @@
+# Ignore Markdown notes at the root and at every directory depth, including daily bundles.
+/notes/*.md
+/notes/*/*.md
+/notes/**.md
+/notes/**/*.md
